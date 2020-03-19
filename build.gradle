@@ -44,4 +44,21 @@ this.gradle.beforeProject{
 this.gradle.afterProject{
     println '初始化阶段执行完毕。。。。'
 }
+/**
+ * project 相关APIj讲解
+ */
+this.getProjects()
 
+def getProjects(){
+    println '-----------------------'
+    println 'Root Project'
+    println '-----------------------'
+    this.getAllprojects().eachWithIndex{
+        Project project, int i ->
+            if(i ==0){
+                println "Root Project: '${project.name}'"
+            }else {
+                println "+-- Project: '${project.name}'"
+            }
+    }
+}

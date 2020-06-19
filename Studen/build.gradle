@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    testVersion = "4.12"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: "4.12"
+}
+
+println 'i am loading,i am studen'
+//println this.testVsersion

@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.piao888'
+version '1.0.0-sersion'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+//创建一个task 要求 独立执行，在本目录下创建一个名为helloTask的文件夹
+task apkcopy {
+    //doLast可保证task执行在 整个gradle的执行阶段，而不是配置阶段(也就是说独立执行，不再配置阶段执行)
+    doLast{
+        //使用gradle执行 命令行
+        exec {
+            executable  'bash'
+            args  '-c','mkdir helloTask'
+        }
+    }
+}
+//直接通过task函数去创建
+task helloTask{
+    print "hello world !hello world! hello world! hello world! hello world!"
+}
+//通过容器（TaskContainer）创建 task
+tasks.create(name:"helloTask2"){
+    println 'i am hello Tas'
+}
+//对task进行配置  创建一个名为back的task 它属于home组,描述信息是回家
+task back(group: 'home',description:'回家'){
+    println 'back home'
+}
+//给通过容器建立的task分配组
+tasks.create(name:"home2"){
+    setGroup('back2')
+    setDescription('回家呀呀呀啊')
+    println 'i am hello Tas'
+}
+
+//配置task在执行期执行  （有两种方法）
+//1.
+task excTask{
+    doFirst {
+        println '我是在执行期执行的exc1'
+    }
+}
+//2.  他的执行会先于 上边那个执行方法
+excTask.doFirst{
+    println '我也是在执行期执行的exc1'
+}
+
+//实战：计算build执行时长
+def starBuilderTime,endBuilderTime
+//如果保证要找的task已经配置完毕，可以使用下面这个监听 因为他会在配置结束之后回调
+this.afterEvaluate {
+    //其可以保证要找的task已经执行完毕
+    def preBuildTask=tasks.getByName("build")
+    build.doFirst{
+        starBuilderTime=System.currentTimeMillis()
+    }
+    build.doLast{
+        endBuilderTime=System.currentTimeMillis();
+        println endBuilderTime-starBuilderTime
+    }
+
+}

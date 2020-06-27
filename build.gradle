@@ -25,6 +25,9 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
 repositories {
     mavenCentral()
 }
@@ -64,118 +67,15 @@ this.gradle.beforeProject {
 this.gradle.afterProject {
     println '初始化阶段执行完毕。。。。'
 }
-/**
- * ====================================================================================
- * project 相关APIj讲解 ,扫描project是初始化 阶段 的动作
- * build.gradle里面的方法，都是在gradle 配置阶段执行的
- * 1.如何获取子类项目，父类项目，根项目
- * 2.如何操作一个指定的project
- */
-
-//1. 如何获取子类项目，父类项目，根项目
-this.getProjects()
-
-def getProjects() {
-    println '-----------------------'
-    println 'Root Project'
-    println '-----------------------'
-    //getAllprojects会返还当前项目的所有project
-    this.getAllprojects().eachWithIndex {
-        Project project, int i ->
-            if (i == 0) {
-                println "Root Project: '${project.name}'"
-            } else {
-                println "+-- Project: '${project.name}'"
-            }
-    }
-    println '-----------------------'
-    println 'Sub Project'
-    println '-----------------------'
-    //getSubproject会返回当前项目的所有子类project
-    this.getSubprojects().eachWithIndex {
-        Project entry, int i ->
-            println "subproject：'${entry.name}'"
-            println name
-    }
-    //getParent 会返回当前项目的父类project,(因为此处是根project不存在父Project 所以会返回一个null 然而在null上获取name，会导致报错)
-//    def parentProjectName = this.getParent().name
-//    println "Parent:'${parentProjectName}'"
-
-    //获取根project getRootProject
-    def rootProjectName = this.getRootProject().name
-    println "rootProjectName:'${rootProjectName}'"
-}
 
 
 //2.如何操作一个指定的project(小提示当闭包只有一个参数时，那么闭包中的方法与属性可以直接针对这个对象参数，无需再写前缀饿了)
-project('Project'){Project project->
+//指定project 只能指定他子项目不能指定父项目或者平级项目
+project('Studen'){Project project->
     println "我要输出这个指定的project名字了:"+name
     println "我要输出这个指定的project的父project:"+parent.name
 //    apply plugin: 'cn.piao888'
 //    group 'cn.piao888'
 //    version '1.0.0-sersion'
 //    dependencies {}
-}
-
-//配置当前节点工程和其subproject的所有project
-allprojects {
-    group 'cn.piao888'
-    version '1.0.0-sersion'
-    dependencies {}
-}
-
-//通过配置文件 为 gradle扩展属性
-println groupa.toString()
-
-//配置操作所有子工程
-subprojects {
-//    apply from:'../READWE.md'
-}
-
-// 获取根目录的绝对路径
-println getRootDir().absolutePath
-//获取build文件的绝对路径
-println getBuildDir().absolutePath
-//获取当前项目的绝对路径
-println getProjectDir().absolutePath
-
-//文件定位方法   这个路径是  相对于当前项目路径，不是绝对路径
-println getContent('build.gradle')
-def getContent(String path){
-    //如果在路径下找到这个文件 就会返回这个对象，如果没找到就报错
-    try{
-        def file=file(path)
-   //     return file.text
-    }catch (GradleException e){
-        e.printStackTrace
-    }
-
-}
-
-copy{
-    Class aClass= this.class
-    println aClass.getSuperclass().getSuperclass().getSuperclass().name
-    println aClass.name
-    from file('Studen/TestCopy')
-    into getRootProject().getBuildDir().absolutePath
-}
-
-fileTree("Studen"){
-    FileTree fileTree->
-        fileTree.visit {
-            FileTreeElement fileTreeElement->
-                println fileTreeElement.file.name
-        }
-}
-//为应用程序添加第三方依赖
-dependencies {
-    //gradle 可以添加多种依赖 有fileTree类型的 files类型的依赖  file类型的依赖  和常规的
-    // 通常情况下，如果选择的是一个文件夹，就需要文件树
-    //如果是 一个单独的jar包，那么只需要选择file类型就可
-    //如下面这个文件树，选择依赖libs文件夹下的所有jar包
-    compile fileTree(includes: ['*.jar'],dir: 'libs')
-    //还可以
-//    compile files()
-//    compile file()
-
 }

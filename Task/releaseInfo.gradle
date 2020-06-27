@@ -1,0 +1,30 @@
+/**
+ * 描述：版本发布文档自动维护脚本
+ * 流程描述：1. 请求本次版本相关信息
+ *         2. 将版本相关信息解析出来
+ *         3. 将解析出的数据生成xml格式数据
+ *         4. 写入到已有的文档数据中
+ */
+
+ext{
+    versionGroup=rootProject.group
+    versionName=rootProject.name
+    versionVersion= rootProject.version
+    destFile=file('releases.xml')
+    if(destFile!=null&&!destFile.exists()){
+        destFile.createNewFile()
+    }
+}
+this.project.afterEvaluate {
+    def buildTask=project.tasks.getByName('build')
+    if(buildTask==null)throw GradleException("the build task is not found")
+    buildTask.doLast {
+        writerTast
+    }
+}
+task writerTast{
+    def releases = new XmlParser().parse(destFile)
+    releases.appendNode("release").appendNode("versionCode",this.versionGroup)
+    println '我执行了啊啊啊啊啊啊啊啊啊啊'
+
+}

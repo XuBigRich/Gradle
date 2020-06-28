@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="24f65209-bf52-432a-8aa1-8fa45c3358b0" name="Default Changelist" comment="">
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/Task/releaseInfo.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Task/releases.xml" afterDir="false" />
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Task/build.gradle" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Project/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Task/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +66,12 @@
         <task path="$PROJECT_DIR$/Studen">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/File">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/SubProjectTest">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -39,6 +79,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Gradle" type="f1a62948:ProjectNode" />
               </path>
+<<<<<<< HEAD
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Gradle" type="f1a62948:ProjectNode" />
@@ -50,6 +91,8 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="other" type="c8890929:TasksNode$1" />
               </path>
+=======
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
             </expand>
             <select />
           </tree_state>
@@ -57,13 +100,20 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/apache-maven-3.6.3" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
         <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -79,23 +129,29 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Task" />
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\Gradle\Task" />
       <recent name="$PROJECT_DIR$/Project" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\Gradle\Project" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.Gradle [apkcopy]">
-    <configuration name="Gradle [apkcopy]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.Gradle [writerTast]">
+    <configuration name="Gradle [taskdefinY]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -106,7 +162,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="apkcopy" />
+            <option value="taskdefinY" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -114,7 +170,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Gradle [build_1gfn641ng6wqp2eb2a3i84880$_run_closure3@630d889e]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Gradle [taskdefinitionY]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -125,7 +181,45 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build_1gfn641ng6wqp2eb2a3i84880$_run_closure3@630d889e" />
+            <option value="taskdefinitionY" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Gradle [taskdefinitionZ]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="taskdefinitionZ" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Gradle [writerTast]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="writerTast" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -150,23 +244,13 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="gradlew" type="ShConfigurationType" temporary="true">
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/gradlew" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/zsh" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Gradle [apkcopy]" />
-        <item itemvalue="Gradle.Gradle [build_1gfn641ng6wqp2eb2a3i84880$_run_closure3@630d889e]" />
+        <item itemvalue="Gradle.Gradle [writerTast]" />
         <item itemvalue="Gradle.Gradle" />
-        <item itemvalue="Shell Script.gradlew" />
+        <item itemvalue="Gradle.Gradle [taskdefinitionZ]" />
+        <item itemvalue="Gradle.Gradle [taskdefinitionY]" />
+        <item itemvalue="Gradle.Gradle [taskdefinY]" />
       </list>
     </recent_temporary>
   </component>
@@ -192,6 +276,7 @@
       <workItem from="1592449491801" duration="5440000" />
       <workItem from="1592466422234" duration="2868000" />
       <workItem from="1592477541345" duration="1880000" />
+<<<<<<< HEAD
       <workItem from="1592535601133" duration="5673000" />
       <workItem from="1592788212986" duration="751000" />
       <workItem from="1592791142757" duration="437000" />
@@ -205,11 +290,29 @@
       <workItem from="1593307581666" duration="456000" />
       <workItem from="1593309868307" duration="47000" />
       <workItem from="1593309940299" duration="308000" />
+=======
+      <workItem from="1592535601133" duration="5519000" />
+      <workItem from="1593219344213" duration="1939000" />
+      <workItem from="1593221355817" duration="3073000" />
+      <workItem from="1593237878355" duration="13642000" />
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="406" y="49" key="#Gradle" timestamp="1592479865610">
@@ -232,40 +335,77 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592270577848" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1592553900007">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="500" y="185" key="FileChooserDialogImpl" timestamp="1593219346851">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state x="500" y="185" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1593219346851" />
+    <state width="1397" height="276" key="GridCell.Tab.0.bottom" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="276" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592553900007" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.813@0.23.1440.813" timestamp="1592465745300" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1592553900006">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1397" height="276" key="GridCell.Tab.0.center" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state width="1397" height="276" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592553900006" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.813@0.23.1440.813" timestamp="1592465745296" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1592553900005">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1397" height="276" key="GridCell.Tab.0.left" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state width="1397" height="276" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592553900005" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.813@0.23.1440.813" timestamp="1592465745294" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1592553900007">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1397" height="276" key="GridCell.Tab.0.right" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state width="1397" height="276" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592553900007" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.813@0.23.1440.813" timestamp="1592465745298" />
-    <state x="273" y="63" key="SettingsEditor" timestamp="1592479940108">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1397" height="276" key="GridCell.Tab.1.bottom" timestamp="1593254130570">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state width="1397" height="276" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1593254130570" />
+    <state width="1397" height="276" key="GridCell.Tab.1.center" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="276" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
+    <state width="1397" height="276" key="GridCell.Tab.1.left" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="276" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
+    <state width="1397" height="276" key="GridCell.Tab.1.right" timestamp="1593254130569">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1397" height="276" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1593254130569" />
+    <state x="273" y="60" key="SettingsEditor" timestamp="1593221265952">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="273" y="60" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1593221265952" />
     <state x="273" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1592479940108" />
-    <state x="303" y="75" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1584497944497" />
+    <state x="513" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593241684133">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="513" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1593241684133" />
     <state x="421" y="205" width="799" height="490" key="find.popup" timestamp="1592467261949">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="421" y="205" width="799" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592467261949" />
-    <state x="94" y="121" key="new project wizard" timestamp="1592552291048">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="189" y="59" key="new project wizard" timestamp="1593240083386">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state x="189" y="59" key="new project wizard/0.0.1440.860@0.0.1440.860" timestamp="1593240083386" />
     <state x="94" y="121" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1592552291048" />
+<<<<<<< HEAD
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592835611702">
+=======
+    <state x="376" y="195" key="run.anything.popup" timestamp="1593248959413">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="376" y="195" key="run.anything.popup/0.0.1440.860@0.0.1440.860" timestamp="1593248959413" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592451004691">
+>>>>>>> fabc0461c588c9dd091331de8a9cf07ce776ea50
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1592835611702" />
@@ -274,9 +414,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/build.gradle</url>
-          <line>90</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/Task/build.gradle</url>
+          <line>176</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Task/releaseInfo.gradle</url>
+          <line>26</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<releases>
+    <release>
+        <versionCode>100</versionCode>
+        <versionName>1.0.0</versionName>
+        <versionInfo>App的第一个版本</versionInfo>
+    </release>
+    <release>
+        <versionCode>101</versionCode>
+        <versionName>1.0.1</versionName>
+        <versionInfo>App的第一个版本，第一次小更新</versionInfo>
+    </release>
+    <release>
+        <versionCode>102</versionCode>
+        <versionName>1.1.0</versionName>
+        <versionInfo>App的第二个大版本</versionInfo>
+    </release>
+    <release>
+        <versionCode>103</versionCode>
+        <versionName>1.2.0</versionName>
+        <versionInfo>App的第三个大版本</versionInfo>
+    </release>
+</releases>

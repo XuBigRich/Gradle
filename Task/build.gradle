@@ -1,9 +1,12 @@
 plugins {
     id 'java'
 }
-
+apply from: 'releaseInfo.gradle'
 group 'cn.piao888'
 version '1.0.0-sersion'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
@@ -13,54 +16,55 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 /**
- * 建立一个task
+ * 如何建立一个task
  */
 //创建一个task 要求 独立执行，在本目录下创建一个名为helloTask的文件夹
 task apkcopy {
     //doLast可保证task执行在 整个gradle的执行阶段，而不是配置阶段(也就是说独立执行，不再配置阶段执行)
-    doLast{
+    doLast {
         //使用gradle执行 命令行
         exec {
-            executable  'bash'
-            args  '-c','mkdir helloTask'
+            executable 'bash'
+            args '-c', 'mkdir helloTask'
         }
     }
 }
 //直接通过task函数去创建
-task helloTask{
+task helloTask {
     print "hello world !hello world! hello world! hello world! hello world!"
 }
 //通过容器（TaskContainer）创建 task
-tasks.create(name:"helloTask2"){
+tasks.create(name: "helloTask2") {
     println 'i am hello Tas'
 }
 //对task进行配置  创建一个名为back的task 它属于home组,描述信息是回家
-task back(group: 'home',description:'回家'){
+task back(group: 'home', description: '回家') {
     println 'back home'
 }
 //给通过容器建立的task分配组
-tasks.create(name:"home2"){
+tasks.create(name: "home2") {
     setGroup('back2')
     setDescription('回家呀呀呀啊')
     println 'i am hello Tas'
 }
 /**
- * 关注于task的切面
+ * 关于task的切面
+ *  配置task在执行期执行  （有两种方法）   这更类似于面向切面编程
  */
-//配置task在执行期执行  （有两种方法）   这更类似于面向切面编程
 //1.
-task excTask{
+task excTask {
+    setGroup("dofirst")
     doFirst {
         println '我是在执行期执行的exc1'
     }
 }
 //2.  他的执行会先于 上边那个执行方法
-excTask.doFirst{
+excTask.doFirst {
     println '我也是在执行期执行的exc1'
 }
 
 //实战：计算build执行时长
-def starBuilderTime,endBuilderTime
+def starBuilderTime, endBuilderTime
 //如果保证要找的task已经配置完毕，可以使用下面这个监听 因为他会在配置结束之后回调
 this.afterEvaluate {
     //其可以保证要找的task已经准备完毕（因为通过getByName 获取到了相应的task）
@@ -75,7 +79,45 @@ this.afterEvaluate {
         println '我开始执行'
         endBuilderTime=System.currentTimeMillis();
         println endBuilderTime-starBuilderTime
+}
+
+/**
+ * task依赖讲解
+ * 如果z依赖于x 与  y
+ * 那么z这个task 将会在 x 与 y task执行完毕之后执行
+ * 且 如果执行z 那么一定会联动的 启动 x 与y 这两个task
+ *  方案有通过添加依赖的方式，还可以使用api的方式
+ * */
+
+//定义几个简单的task
+task taskX {
+    doLast {
+        println 'taskX'
     }
+}
+task taskY {
+    doLast {
+        println 'taskY'
+    }
+}
+
+
+//通过依赖的方式使taskZ依赖于taskX与taskY
+task taskZ(dependsOn: [taskX, taskY]) {
+    doLast {
+        println 'taskZ'
+    }
+}
+
+//方法的方式 添加依赖
+task taskQ {
+    doLast {
+        println 'taskQ'
+    }
+}
+
+taskQ.dependsOn(taskX, taskY)
+
 
 }
 /**
@@ -96,3 +138,133 @@ task taskz(dependsOn: taskx) {
         println taskz
     }
 }
+//动态定义 task依赖 （前面个两个task都是在已知需要依赖的task之后通过代码写出来的，这个是根据结果动态选择要依赖于哪个task）
+//<< 是doLast意思  >>是do first   但在有的高级gradle版本中不支持，推荐使用doLast
+
+/*
+task lib1 >>  {
+        println 'lib1'
+}
+*/
+
+task lib1  {
+    doLast{
+        println 'lib1'
+    }
+
+}
+task lib2  {
+    doLast{
+        println 'lib2'
+    }
+}
+task lib3  {
+    doLast{
+        println 'lib3First'
+    }
+
+}
+lib3  {
+  doLast{
+      println 'lib3Last'
+  }
+}
+task nolib  {
+ doLast{
+     println 'is no lib'
+ }
+}
+
+
+//依赖所有以lib开头的 task  ,也就是说除了nolib都要依赖
+
+task depenLib {
+    dependsOn this.tasks.findAll {
+            task ->
+                return task.name.startsWith('lib')
+    }
+    doLast {
+        println 'depenLib'
+    }
+}
+/**
+ * 分割xml文件脚本
+ */
+task catFile(group: 'readXML') {
+
+    //读取xml
+    def srcFile = this.getProjectDir().absolutePath + '/releases.xml'
+    //生成新的releses文件
+    //1.建立分割后目录存放的位置
+    def destDir = new File(this.buildDir, 'generated/release/')
+    doLast {
+        println '开始解析对应的xml文件.....'
+        destDir.mkdirs()
+        /*
+        //这里额外讲解一下xml解析后的样子  在根节点下面有一个attributes 和value value是值，attributes是选项
+           releases[attributes={};value=[
+                release[attributes={}; value=[
+                                        versionCode[attributes={}; value=[100]],
+                                        versionName[attributes={}; value=[1.0.0]],
+                                        versionInfo[attributes={}; value=[App的第一个版本]
+                                      ]
+                       ]
+            ]
+        */
+        def releases = new XmlParser().parse(srcFile)
+        releases.release.each {
+            releaseNode ->
+                def name = releaseNode.versionCode.text()
+                def code = releaseNode.versionName.text()
+                def info = releaseNode.versionInfo.text()
+                def destFile = new File(destDir, "release-${name}.text")
+                destFile.withWriter {
+                    writer -> writer.write("${name} ->${code} ->${info}")
+                }
+        }
+    }
+}
+//测试catFile task 是否执行成功
+task catFileTest(dependsOn: catFile) {
+    def dir = new File(this.buildDir, 'generated/release/')
+    doLast {
+        dir.each {
+            println it
+        }
+        println '输出完成'
+    }
+}
+
+/**
+ * 执行顺序指定
+ */
+task taskdefinitionX{
+    doLast {
+        println 'taskdefiniteionX'
+    }
+}
+
+task taskdefinitionY{
+    doLast {
+        println 'taskdefinitionY'
+    }
+}
+//mustRunAfter 强制要求task必须在某些/某个task之后执行
+//  测试执行代码： gradlew taskdefinitionY taskdefinitionZ taskdefinitionX
+//  通常情况下代码的先后位置就决定了执行的先后顺序，
+//      然而通过mustRunAfter 这个API就可以控制taskdefinitionZ 这个代码必须在taskdefinitionY  taskdefinitionX之后执行
+//      至于taskdefinitionY  taskdefinitionX的执行顺序依然 依靠 代码先后顺序执行
+task taskdefinitionZ{
+    mustRunAfter taskdefinitionX,taskdefinitionY
+    doLast {
+        println 'taskdefinitionZ'
+    }
+}
+//shouldRunAfter 不强制要求task在某些/某个task之后执行
+/*
+task taskdefinitionZ{
+    shouldRunAfter taskdefinitionX,taskdefinitionY
+    doLast {
+        println 'taskdefinitionZ'
+    }
+}*/

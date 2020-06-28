@@ -1,0 +1,66 @@
+/**
+ * gradle对文件的操作
+ */
+plugins {
+    id 'java'
+}
+
+group 'cn.piao888'
+version '1.0.0-sersion'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// 获取根目录的绝对路径
+println getRootDir().absolutePath
+//获取build文件的绝对路径
+println getBuildDir().absolutePath
+//获取当前项目的绝对路径
+println getProjectDir().absolutePath
+
+//文件定位方法   这个路径是  相对于当前项目路径，不是绝对路径
+println getContent('build.gradle')
+def getContent(String path){
+    //如果在路径下找到这个文件 就会返回这个对象，如果没找到就报错
+    try{
+        def file=file(path)
+        //     return file.text
+    }catch (GradleException e){
+        e.printStackTrace
+    }
+
+}
+
+copy{
+    Class aClass= this.class
+    println aClass.getSuperclass().getSuperclass().getSuperclass().name
+    println '复制的项目名'+ aClass.name
+    println getRootProject().getBuildDir().absolutePath
+    from file('../Studen/TestCopy')
+    into getRootProject().getProjectDir()
+}
+
+fileTree("../Studen"){
+    FileTree fileTree->
+        fileTree.visit {
+            FileTreeElement fileTreeElement->
+                println fileTreeElement.file.name
+        }
+}
+//为应用程序添加第三方依赖
+dependencies {
+    //gradle 可以添加多种依赖 有fileTree类型的 files类型的依赖  file类型的依赖  和常规的
+    // 通常情况下，如果选择的是一个文件夹，就需要文件树
+    //如果是 一个单独的jar包，那么只需要选择file类型就可
+    //如下面这个文件树，选择依赖libs文件夹下的所有jar包
+    compile fileTree(includes: ['*.jar'],dir: 'libs')
+    //还可以
+//    compile files()
+//    compile file()
+
+}

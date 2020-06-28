@@ -6,10 +6,11 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:/gradle-6.2.2" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../gradle-6.2.2" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/File" />
             <option value="$PROJECT_DIR$/Project" />
             <option value="$PROJECT_DIR$/Studen" />
             <option value="$PROJECT_DIR$/Task" />

@@ -12,6 +12,9 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+/**
+ * 建立一个task
+ */
 //创建一个task 要求 独立执行，在本目录下创建一个名为helloTask的文件夹
 task apkcopy {
     //doLast可保证task执行在 整个gradle的执行阶段，而不是配置阶段(也就是说独立执行，不再配置阶段执行)
@@ -41,8 +44,10 @@ tasks.create(name:"home2"){
     setDescription('回家呀呀呀啊')
     println 'i am hello Tas'
 }
-
-//配置task在执行期执行  （有两种方法）
+/**
+ * 关注于task的切面
+ */
+//配置task在执行期执行  （有两种方法）   这更类似于面向切面编程
 //1.
 task excTask{
     doFirst {
@@ -58,14 +63,36 @@ excTask.doFirst{
 def starBuilderTime,endBuilderTime
 //如果保证要找的task已经配置完毕，可以使用下面这个监听 因为他会在配置结束之后回调
 this.afterEvaluate {
-    //其可以保证要找的task已经执行完毕
+    //其可以保证要找的task已经准备完毕（因为通过getByName 获取到了相应的task）
     def preBuildTask=tasks.getByName("build")
+    //在build任务执行之前执行
     build.doFirst{
+        println '我开始执行'
         starBuilderTime=System.currentTimeMillis()
     }
+    //在build任务执行完毕之后执行
     build.doLast{
+        println '我开始执行'
         endBuilderTime=System.currentTimeMillis();
         println endBuilderTime-starBuilderTime
     }
 
+}
+/**
+ *  task的依赖
+ */
+task taskx {
+    doLast {
+        println taskx
+    }
+}
+task tasky {
+    doLast {
+        println tasky
+    }
+}
+task taskz(dependsOn: taskx) {
+    doLast {
+        println taskz
+    }
 }

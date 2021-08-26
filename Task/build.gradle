@@ -2,6 +2,7 @@ plugins {
     id 'java'
 }
 apply from: 'releaseInfo.gradle'
+apply from: 'sort.gradle'
 group 'cn.piao888'
 version '1.0.0-sersion'
 
@@ -11,9 +12,8 @@ compileTestJava.options.encoding = 'UTF-8'
 repositories {
     mavenCentral()
 }
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'junit', name: 'junit', version: '4.12'
 }
 /**
  * 如何建立一个task
@@ -68,18 +68,18 @@ def starBuilderTime, endBuilderTime
 //如果保证要找的task已经配置完毕，可以使用下面这个监听 因为他会在配置结束之后回调
 this.afterEvaluate {
     //其可以保证要找的task已经准备完毕（因为通过getByName 获取到了相应的task）
-    def preBuildTask=tasks.getByName("build")
+    def preBuildTask = tasks.getByName("build")
     //在build任务执行之前执行
-    build.doFirst{
+    build.doFirst {
         println '我开始执行'
-        starBuilderTime=System.currentTimeMillis()
+        starBuilderTime = System.currentTimeMillis()
     }
     //在build任务执行完毕之后执行
-    build.doLast{
+    build.doLast {
         println '我开始执行'
-        endBuilderTime=System.currentTimeMillis();
-        println endBuilderTime-starBuilderTime
-}
+        endBuilderTime = System.currentTimeMillis();
+        println endBuilderTime - starBuilderTime
+    }
 
 /**
  * task依赖讲解
@@ -90,33 +90,32 @@ this.afterEvaluate {
  * */
 
 //定义几个简单的task
-task taskX {
-    doLast {
-        println 'taskX'
+    task taskX {
+        doLast {
+            println 'taskX'
+        }
     }
-}
-task taskY {
-    doLast {
-        println 'taskY'
+    task taskY {
+        doLast {
+            println 'taskY'
+        }
     }
-}
 
 
 //通过依赖的方式使taskZ依赖于taskX与taskY
-task taskZ(dependsOn: [taskX, taskY]) {
-    doLast {
-        println 'taskZ'
+    task taskZ(dependsOn: [taskX, taskY]) {
+        doLast {
+            println 'taskZ'
+        }
     }
-}
-
 //方法的方式 添加依赖
-task taskQ {
-    doLast {
-        println 'taskQ'
+    task taskQ {
+        doLast {
+            println 'taskQ'
+        }
     }
-}
 
-taskQ.dependsOn(taskX, taskY)
+    taskQ.dependsOn(taskX, taskY)
 
 
 }
@@ -147,32 +146,32 @@ task lib1 >>  {
 }
 */
 
-task lib1  {
-    doLast{
+task lib1 {
+    doLast {
         println 'lib1'
     }
 
 }
-task lib2  {
-    doLast{
+task lib2 {
+    doLast {
         println 'lib2'
     }
 }
-task lib3  {
-    doLast{
+task lib3 {
+    doLast {
         println 'lib3First'
     }
 
 }
-lib3  {
-  doLast{
-      println 'lib3Last'
-  }
+lib3 {
+    doLast {
+        println 'lib3Last'
+    }
 }
-task nolib  {
- doLast{
-     println 'is no lib'
- }
+task nolib {
+    doLast {
+        println 'is no lib'
+    }
 }
 
 
@@ -180,8 +179,8 @@ task nolib  {
 
 task depenLib {
     dependsOn this.tasks.findAll {
-            task ->
-                return task.name.startsWith('lib')
+        task ->
+            return task.name.startsWith('lib')
     }
     doLast {
         println 'depenLib'
@@ -238,13 +237,13 @@ task catFileTest(dependsOn: catFile) {
 /**
  * 执行顺序指定
  */
-task taskdefinitionX{
+task taskdefinitionX {
     doLast {
         println 'taskdefiniteionX'
     }
 }
 
-task taskdefinitionY{
+task taskdefinitionY {
     doLast {
         println 'taskdefinitionY'
     }
@@ -254,8 +253,8 @@ task taskdefinitionY{
 //  通常情况下代码的先后位置就决定了执行的先后顺序，
 //      然而通过mustRunAfter 这个API就可以控制taskdefinitionZ 这个代码必须在taskdefinitionY  taskdefinitionX之后执行
 //      至于taskdefinitionY  taskdefinitionX的执行顺序依然 依靠 代码先后顺序执行
-task taskdefinitionZ{
-    mustRunAfter taskdefinitionX,taskdefinitionY
+task taskdefinitionZ {
+    mustRunAfter taskdefinitionX, taskdefinitionY
     doLast {
         println 'taskdefinitionZ'
     }

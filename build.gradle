@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'junit', name: 'junit', version: '4.12'
 }
 /**
  * 配置阶段开始前的监听回调

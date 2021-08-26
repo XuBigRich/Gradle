@@ -1,7 +1,12 @@
 plugins {
     id 'java'
 }
-
+//声明变量
+ext {
+    gradleConfigUrl = "http://192.168.90.222:7777/gradleConfig/"
+}
+//引用 versionConfig.gradle资源
+apply from: resources.text.fromInsecureUri(gradleConfigUrl + 'versionConfig.gradle')
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -10,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'junit', name: 'junit', version: '4.12'
 }
 
 /**

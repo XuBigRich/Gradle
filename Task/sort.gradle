@@ -1,0 +1,24 @@
+task myTask
+
+// 这个方法可以探究doLast 与 doFirst的追加方式
+
+myTask.doLast {
+    println "myTask main execution block"
+}
+
+myTask.doFirst {
+    println "myTask doFirst call one"
+}
+
+myTask.doFirst {
+    println "myTask doFirst call two"
+}
+
+myTask.doLast {
+    println "myTask doLast"
+}
+
+myTask.doLast {
+    println "myTask more main execution block"
+}
+

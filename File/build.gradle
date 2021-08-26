@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly group: 'junit', name: 'junit', version: '4.12'
 }
 
 // 获取根目录的绝对路径
@@ -58,9 +58,9 @@ dependencies {
     // 通常情况下，如果选择的是一个文件夹，就需要文件树
     //如果是 一个单独的jar包，那么只需要选择file类型就可
     //如下面这个文件树，选择依赖libs文件夹下的所有jar包
-    compile fileTree(includes: ['*.jar'],dir: 'libs')
+    implementation fileTree(includes: ['*.jar'],dir: 'libs')
     //还可以
-//    compile files()
-//    compile file()
+//    implementation files()
+//    implementation file()
 
 }

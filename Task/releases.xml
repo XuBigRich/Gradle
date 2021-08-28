@@ -21,4 +21,10 @@
         <versionName>1.2.0</versionName>
         <versionInfo>App的第三个大版本</versionInfo>
     </release>
+
+<release>
+  <versionCode>org.example</versionCode>
+  <versionName>Gradle</versionName>
+  <versionInfo>1.0-SNAPSHOT</versionInfo>
+</release>
 </releases>

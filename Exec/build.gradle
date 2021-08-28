@@ -1,0 +1,118 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.piao888'
+version '1.0.0-sersion'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly group: 'junit', name: 'junit', version: '4.12'
+}
+
+//一个通过docker实现了持续集成的小例子
+//在一个exec块中，他们的命令是并行的
+//exec 与exec之间是串行的
+task docker {
+    doLast {
+        def cmdResult = 'docker --tlsverify -H=47.105.84.193:2375 ps -aqf name=cc_live'.execute().text.trim()
+        if (cmdResult != "") {
+            exec {
+                commandLine 'docker', '--tlsverify', '-H=47.105.84.193:2375', 'rm', '-f', cmdResult
+            }
+        }
+        exec {
+            println '开始打包'
+            def packe = commandLine 'docker', '--tlsverify', '-H=47.105.84.193:2375', "build", '-t', 'cc_live:v1', '-f', './Dockerfile', 'build/'
+            println packe
+        }
+        exec {
+            println '开始编译'
+            commandLine 'docker', '--tlsverify', '-H=47.105.84.193:2375', 'run', '-it', '-d', "-p", "8090:8090", '--name=cc_live', 'cc_live:v1'
+        }
+    }
+}
+//直接通过字符串输出
+//当遇到需要持续输出时，他是将数据缓存下来 一下子输出
+task scheme1 {
+    def cmd = 'netstat -ay'
+    doLast {
+        //这个是可行的
+        def cmdResult = cmd.execute().text.trim()
+        println cmdResult
+    }
+}
+//通过exec对象进行输出 命令执行
+//当遇到需要持续输出时，他是将数据一个一个的输出
+
+task scheme2 {
+    doLast {
+        //方式一：
+        exec {
+            //工作目录可以去掉
+//            workingDir '.'
+            commandLine "netstat", "-ay"
+            standardOutput = new ByteArrayOutputStream()
+            ext.output = {
+                return standardOutput.toString()
+            }
+
+        }
+        println "hello end"
+    }
+}
+
+
+ext {
+    curIp = getIp().trim()
+}
+
+
+task learnExec {
+    def file = new File("exec/exec/logs")
+    if (!file.exists()) {
+        file.createNewFile()
+    }
+    def out = new FileOutputStream(file)
+    exec {
+        workingDir 'exec'
+        //on windows:
+        commandLine 'cmd', '/c', 'getIp.bat'
+        //on linux  (只有在linux 系统下才起效 ，因为不是在linux环境下 暂时注释掉 )
+//        commandLine './start.sh'
+        standardOutput = new FileOutputStream(file)
+        //store the output instead of printing to the console:
+        //同样 如果不是再linux环境下执行shell脚本，其shell脚本的标准输出并不会被重定向到 file目录下（所以暂时注释掉）
+        ext.output = {
+            return standardOutput.toString()
+        }
+    }
+}
+
+//不管怎么样windows下这个可以正常输出
+def getIp() {
+    def file = new File("exec/exec/logs")
+    if (!file.exists()) {
+        file.createNewFile()
+    }
+
+//    def out = new ByteArrayOutputStream()
+    exec {
+        workingDir 'exec'//getIp.sh所在目录，可以是绝对路径或相对路径
+        commandLine 'cmd', '/c', 'getIp.bat'
+        def out = new FileOutputStream(file)
+        //这是gradle内部 的属性,它属于关键属性，所以他会有一个默认值，但是我们可以通过上面的手段修改它
+        //有什么用？
+        //当执行相应逻辑时  exec对象中的某些方法会调用自己的属性做一些相应的逻辑处理。
+        //如这里我们看不到的 standardOutput.write() 方法，将打印的信息输出到file文件中
+        standardOutput = out
+    }
+    //只有当 def out = new ByteArrayOutputStream()模式下才有效
+    return out.toString()
+}
+
+
+println "curIp" + curIp

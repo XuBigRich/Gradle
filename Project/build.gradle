@@ -3,10 +3,10 @@ plugins {
 }
 //声明变量
 ext {
-    gradleConfigUrl = "http://192.168.90.222:7777/gradleConfig/"
+//    gradleConfigUrl = "http://192.168.90.222:7777/gradleConfig/"
 }
 //引用 versionConfig.gradle资源
-apply from: resources.text.fromInsecureUri(gradleConfigUrl + 'versionConfig.gradle')
+//apply from: resources.text.fromInsecureUri(gradleConfigUrl + 'versionConfig.gradle')
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -62,7 +62,6 @@ def getProjects() {
     def rootProjectName = this.getRootProject().name
     println "rootProjectName:'${rootProjectName}'"
 }
-
 
 
 //配置当前节点工程和其subproject的所有project

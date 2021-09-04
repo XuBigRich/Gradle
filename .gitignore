@@ -6,7 +6,7 @@ target/
 logs/
 build/
 */build
-
+.gradle
 # Log file
 *.log
 

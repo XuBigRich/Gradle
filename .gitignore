@@ -9,6 +9,7 @@ build/
 .gradle
 # Log file
 *.log
+gradle
 
 # BlueJ files
 *.ctxt
